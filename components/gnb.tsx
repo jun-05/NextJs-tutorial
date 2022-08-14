@@ -11,6 +11,7 @@ import {
   MenuList,
   MenuItem,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 import { useAuth } from '@/contexts/auth_user.context';
 
 const GNB: React.FC = function () {
@@ -45,7 +46,10 @@ const GNB: React.FC = function () {
       <MenuList>
         <MenuItem
           onClick={() => {
-            window.location.href = `/${authUser?.screenName ?? ''}`;
+            window.location.href = `/${authUser?.email?.replace(
+              '@gmail.com',
+              '',
+            )}`;
           }}
         >
           사용자 홈으로 이동
@@ -74,8 +78,10 @@ const GNB: React.FC = function () {
         justify="flex-end"
       >
         <Spacer />
-        <Box flex={{ base: 1 }}>
-          <img style={{ height: '40px' }} src="/logo.svg" alt="logo" />
+        <Box flex={{ base: 1 }} cursor="pointer">
+          <Link href="/">
+            <img style={{ height: '40px' }} src="/logo.svg" alt="logo" />
+          </Link>
         </Box>
 
         <Box>{authInitialized ? loginBtn : logoutBtn}</Box>
