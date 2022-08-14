@@ -1,4 +1,4 @@
-만들면서 배우는 프론트엔드 DO IT 코딩 (Next.js, Typescript) 연습입니다.
+인프런 강의 : 만들면서 배우는 프론트엔드 DO IT 코딩 (Next.js, Typescript) 연습입니다.
 
 # blahx2
 
