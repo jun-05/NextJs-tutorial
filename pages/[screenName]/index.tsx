@@ -362,17 +362,16 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
       },
     };
   }
+
   try {
-    console.log('baseUrl');
     const protocol = process.env.PROTOCOL || 'http';
     const host = process.env.HOST || 'localhost';
-    const port = process.env.PROT || '3000';
+    const port = process.env.PORT || '3000';
     const baseUrl = `${protocol}://${host}:${port}`;
     console.log(baseUrl);
     const userInfoResp: AxiosResponse<InAuthUser> = await axios(
       `${baseUrl}/api/user.info/${screenName}`,
     );
-    console.log(userInfoResp);
     const screenNameToStr = Array.isArray(screenName)
       ? screenName[0]
       : screenName;
