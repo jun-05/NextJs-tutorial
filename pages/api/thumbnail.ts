@@ -12,7 +12,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (process.env.NODE_ENV !== 'development') {
     const protocol = process.env.PROTOCOL || 'http';
     const host = process.env.HOST || 'localhost';
-    const port = process.env.PROT || '3000';
+    const port = process.env.PORT || '3000';
     const baseUrl = `${protocol}://${host}:${port}`;
 
     await chromium.font(`${baseUrl}/Pretendard-Regular.ttf`);
