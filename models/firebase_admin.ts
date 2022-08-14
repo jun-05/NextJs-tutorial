@@ -1,16 +1,14 @@
 import * as admin from 'firebase-admin';
 
 interface Config {
-  databaseurl: string;
   credential: {
-    privateKey: string ;
+    privateKey: string;
     clientEmail: string;
     projectId: string;
   };
 }
 
 export default class FirebaseAdmin {
-  [x: string]: any;
   public static instance: FirebaseAdmin;
 
   private init = false;
@@ -39,23 +37,23 @@ export default class FirebaseAdmin {
   }
 
   private bootstrap(): void {
-    if (!!admin.apps.length === true) {
+    const haveApp = admin.apps.length !== 0;
+    if (haveApp) {
       this.init = true;
       return;
     }
     const config: Config = {
-      databaseurl: process.env.databaseurl || '',
       credential: {
         privateKey: (process.env.privateKey || '').replace(/\\n/g, '\n'),
         clientEmail: process.env.clientEmail || '',
         projectId: process.env.projectId || '',
       },
     };
-    console.log(config.credential)
+
     admin.initializeApp({
-      databaseURL: config.databaseurl,
       credential: admin.credential.cert(config.credential),
     });
-    console.log('bootstrap end');
+    console.info('bootstrap firebase admin');
+    console.log('bootstrap firebase admin');
   }
 }
